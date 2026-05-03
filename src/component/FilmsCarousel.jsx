@@ -1,10 +1,14 @@
 import { Component } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import LoadingSpinner from "./LoadingSpinner";
+import Error from "./Error";
 
 class FilmsCarousel extends Component {
   state = {
     filmSaga: null,
+    error: false,
+    errorMessage: "",
+    errorDetails: "",
   };
 
   getFilms = async () => {
@@ -19,10 +23,18 @@ class FilmsCarousel extends Component {
           filmSaga: data.Search,
         });
       } else {
-        console.log("ERRORE NEL JSON", response.status);
+        this.setState({
+          error: true,
+          errorMessage: "ERRORE NEL JSON",
+          erroreDetails: response.status,
+        });
       }
     } catch (err) {
-      console.log("ERRORE NEL SERVER", err);
+      this.setState({
+        error: true,
+        errorMessage: "ERRORE NEL SERVER",
+        errorDetails: err,
+      });
     }
   };
 
@@ -37,6 +49,12 @@ class FilmsCarousel extends Component {
 
     return (
       <>
+        {this.state.error && (
+          <Error
+            message={this.state.errorMessage}
+            details={this.state.errorDetails}
+          ></Error>
+        )}
         <Swiper
           spaceBetween={10}
           slidesPerView={1}

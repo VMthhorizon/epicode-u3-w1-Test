@@ -5,6 +5,7 @@ import "swiper/css";
 import HeaderNavbar from "./component/HeaderNavbar";
 import FilmsCarousel from "./component/FilmsCarousel";
 import { Container, Row, Col } from "react-bootstrap";
+import MyFooter from "./component/MyFooter";
 
 function App() {
   return (
@@ -38,6 +39,9 @@ function App() {
           </Col>
         </Row>
       </main>
+      <footer className="d-flex justify-content-center">
+        <MyFooter></MyFooter>
+      </footer>
     </Container>
   );
 }
