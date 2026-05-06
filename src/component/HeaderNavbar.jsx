@@ -2,11 +2,12 @@ import { BellFill, Search } from "react-bootstrap-icons";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import { Link } from "react-router-dom";
 
 function HeaderNavbar() {
   return (
     <Navbar data-bs-theme="dark" expand="lg" className="bg-black">
-      <Navbar.Brand href="#home" className="me-0">
+      <Navbar.Brand className="me-0">
         <img
           src="/public/assets/netflix_logo.png"
           className="img-fluid"
@@ -20,13 +21,27 @@ function HeaderNavbar() {
         className="justify-content-between ms-2 ms-lg-0"
       >
         <Nav>
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#TvShows">Tv Shows</Nav.Link>
-          <Nav.Link href="#Movies">Movies</Nav.Link>
-          <Nav.Link href="#RecentlyAdded">Recently Added</Nav.Link>
-          <Nav.Link href="#MyList">My List</Nav.Link>
-          <Nav.Link href="#PROFILEPAGE">PROFILE</Nav.Link>
-          <Nav.Link href="#SETTINGSPAGE">SETTINGS</Nav.Link>
+          <Link className="nav-link" to="/">
+            Home
+          </Link>
+          <Link className="nav-link" to="/TvShows">
+            Tv Shows
+          </Link>
+          <Link className="nav-link" to="#">
+            Movies
+          </Link>
+          <Link className="nav-link" to="#">
+            Recently Added
+          </Link>
+          <Link className="nav-link" to="#">
+            My List
+          </Link>
+          <Link className="nav-link" to="/profile">
+            PROFILE
+          </Link>
+          <Link className="nav-link" to="#">
+            Settings
+          </Link>
         </Nav>
         <Nav className="d-flex align-items-center flex-row gap-2">
           <Nav.Link href="#Search">

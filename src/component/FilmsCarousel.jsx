@@ -2,6 +2,7 @@ import { Component } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import LoadingSpinner from "./LoadingSpinner";
 import Error from "./Error";
+import { Link } from "react-router-dom";
 
 class FilmsCarousel extends Component {
   state = {
@@ -72,11 +73,13 @@ class FilmsCarousel extends Component {
           {this.state.filmSaga.map((movie) => {
             return (
               <SwiperSlide key={movie.imdbID}>
-                <img
-                  src={movie.Poster}
-                  alt={movie.Title}
-                  style={{ width: "100%", height: 300, display: "block" }}
-                />
+                <Link to={`/details/${movie.imdbID}`}>
+                  <img
+                    src={movie.Poster}
+                    alt={movie.Title}
+                    style={{ width: "100%", height: 300, display: "block" }}
+                  />
+                </Link>
               </SwiperSlide>
             );
           })}

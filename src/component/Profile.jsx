@@ -1,12 +1,10 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
-import SimpleNavbar from "../component/SimpleNavbar";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
 
 const Profile = () => {
   return (
     <>
-      <SimpleNavbar></SimpleNavbar>
       <Container className="w-50 my-3 flex-column">
         <Row className="my-2">
           <Col xs={12} className=" text-center text-md-start">
@@ -51,9 +49,9 @@ const Profile = () => {
             </h4>
           </Col>
           <Col xs={6} className="offset-md-6">
-            <h4 class="text-light fw-lighter fs-6 mb-4">
+            <h4 className="text-light fw-lighter fs-6 mb-4">
               Show titles of
-              <span class="fw-bolder"> all maturity ratings</span> for this
+              <span className="fw-bolder"> all maturity ratings</span> for this
               profile
             </h4>
           </Col>
