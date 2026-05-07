@@ -3,14 +3,14 @@ import { Card } from "react-bootstrap";
 import { useEffect, useState } from "react";
 
 const MovieDetails = () => {
-  const [movies, setMovies] = useState(null);
+  const [movies, setMovies] = useState({});
   const param = useParams().movieId;
   console.log(param);
 
   const getMovies = async () => {
     try {
       const response = await fetch(
-        `http://www.omdbapi.com/?apikey=b7e1565ci=` + param,
+        `http://www.omdbapi.com/?apikey=b7e1565c&i=` + param,
       );
       if (response.ok) {
         const data = await response.json();
@@ -24,32 +24,26 @@ const MovieDetails = () => {
     }
   };
 
-  //   const foundMovie = movies.find((film) => {
-  //     return film.id.toString() === param;
-  //   });
-
   useEffect(() => {
-    const foundMovie = movies.find((film) => {
-      return movies.imdbID.toString() === param;
-    }); // foundPasta è UNO degli oggetti del JSON, quello in cui ha trovato un match tra il proprio id
-    setMovies(foundMovie);
-  }, []);
-
-  //   useEffect(() => {
-  //     getMovies();
-  //   }, [param]);
+    getMovies();
+  }, [param]);
 
   return (
     <>
-      <Card>
-        <Card.Img variant="top" src={movies.Poster} />
+      <Card className="my-4" style={{ width: 450 }}>
+        <Card.Img
+          className="object-fit-fill"
+          style={{ height: 330 }}
+          variant="top"
+          src={movies.Poster}
+        />
         <Card.Body>
-          <Card.Title>{movies.Title}</Card.Title>
-          <Card.Text>{movies.Title}</Card.Text>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </Card.Text>
+          <Card.Title>
+            {movies.Title} - {movies.Year}
+          </Card.Title>
+          <Card.Text>{movies.Genre}</Card.Text>
+          <Card.Text>Director: {movies.Director}</Card.Text>
+          <Card.Text>{movies.Plot}</Card.Text>
         </Card.Body>
       </Card>
     </>
